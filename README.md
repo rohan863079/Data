@@ -1,4 +1,4 @@
-# Data
+9# Data
 
 The Databricks Unity Catalog permissions have now been granted to the new non-admin Service Principal "SQL-Practice-Studio-Executor".
 
@@ -56,3 +56,24 @@ Important:
 - Do not expose credentials.
 
 Return a detailed PASS/FAIL report and a list of remaining blockers.
+
+
+
+
+
+-----------------------+-----
+The latest implementation checks passed (13 backend checks, 13 Databricks tests, and git diff check).
+
+Now perform a final pre-execution review for Databricks Free Edition Serverless Jobs.
+
+1. Verify the exact Jobs API payload for a notebook task using serverless compute by omitting all cluster assignment fields.
+2. Confirm the notebook task type is supported by serverless Jobs.
+3. Check that the notebook source and task configuration are valid.
+4. Review serverless compatibility of the PySpark code. Use Spark Connect-compatible DataFrame APIs only; flag unsupported RDD or Spark Classic APIs.
+5. Verify the dedicated non-admin Service Principal has the required permission to create and run jobs and access the notebook.
+6. Verify user isolation and safe execution controls.
+7. Confirm that no Admin identity or credentials are used.
+
+Do not submit a job, enable remote execution, change readiness flags, or deploy.
+
+Return the exact remaining blockers. If all prechecks pass, ask for explicit approval before submitting one harmless test job.
