@@ -28,4 +28,31 @@ Important:
 - Do not deploy to production.
 - Keep the existing Local PySpark Runner working.
 
-At the end, provide a clear PASS/FAIL report and identify any remaining OAuth scope, permission, or Free Edition limitations.
+At the end, provide a clear PASS/FAIL report and identify any remaining OAuth scope, permission, or Free Edition 
+
+
+limitations.
+
+
+-----------
+Databricks OAuth M2M, executor identity, Unity Catalog catalog/schema access, Volume metadata access, and Files API directory listing have all passed.
+
+Now proceed with the next security and compatibility verification phase.
+
+1. Review the complete Databricks remote execution implementation.
+2. Verify that only the dedicated non-admin Service Principal "SQL-Practice-Studio-Executor" can be used by the backend.
+3. Confirm that the old Admin Service Principal is never used for learner execution.
+4. Review learner isolation, arbitrary code execution risks, access to other users' files, secrets exposure, timeouts, resource limits, cancellation, concurrency and log sanitization.
+5. Verify whether Databricks Free Edition currently supports the required Jobs API and compute execution workflow.
+6. Identify any blockers before a safe live test.
+
+Important:
+
+- Do not enable remote execution.
+- Do not change readiness flags.
+- Do not submit a live job yet.
+- Do not deploy to production.
+- Preserve the existing Local PySpark Runner.
+- Do not expose credentials.
+
+Return a detailed PASS/FAIL report and a list of remaining blockers.
